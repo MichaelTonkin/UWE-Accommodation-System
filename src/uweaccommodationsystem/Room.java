@@ -6,7 +6,7 @@ public class Room{
     private String cleaningStatus;
     private Lease lease;
     
-    Room(int roomNumber)
+    public Room(int roomNumber)
     {
         this.roomNumber = roomNumber;
     }
