@@ -1,10 +1,10 @@
 package uweaccommodationsystem;
 
 public class Room{
-    int roomNumber;
-    boolean roomStatus; //false = unoccupied, true = occupied
-    String cleaningStatus;
-    Lease lease;
+    private int roomNumber;
+    private boolean roomStatus; //false = unoccupied, true = occupied
+    private String cleaningStatus;
+    private Lease lease;
     
     Room(int roomNumber)
     {
