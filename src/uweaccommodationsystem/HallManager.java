@@ -1,7 +1,8 @@
+package UWEAccommodationSystem;
 
 public class HallManager {
     
-    String uerName;
+    String userName;
     String password;
     
     public String getPassword(){
@@ -10,7 +11,7 @@ public class HallManager {
     }
     
     public String getUserName(){
-        return this.uerName;
+        return this.userName;
     }
     
 }
