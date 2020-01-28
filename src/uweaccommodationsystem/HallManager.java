@@ -2,8 +2,8 @@ package UWEAccommodationSystem;
 
 public class HallManager {
     
-    String userName;
-    String password;
+    private String userName;
+    private String password;
     
     public String getPassword(){
         
