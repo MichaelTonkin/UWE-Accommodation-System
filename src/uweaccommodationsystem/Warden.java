@@ -1,7 +1,7 @@
 
 public class Warden {
-    String password;
-    String userName;
+    private String password;
+    private String userName;
     
     public String getUsrename(){
         
