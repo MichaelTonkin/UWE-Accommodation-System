@@ -1,4 +1,4 @@
-package uweaccommodationsystem;
+package guiforuweaccommodationsystem;
 
 public class Room{
     private int roomNumber;

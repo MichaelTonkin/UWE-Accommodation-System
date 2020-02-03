@@ -61,7 +61,7 @@
       </BorderPane>
    </top>
    <right>
-      <AnchorPane prefHeight="256.0" prefWidth="732.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="256.0" prefWidth="732.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <TextField layoutX="175.0" layoutY="73.0" />
             <TextField layoutX="175.0" layoutY="121.0" />
@@ -88,7 +88,7 @@
       </AnchorPane>
    </right>
    <left>
-      <VBox prefHeight="308.0" prefWidth="289.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="308.0" prefWidth="289.0" BorderPane.alignment="TOP_RIGHT">
          <children>
             <Label text="Account">
                <VBox.margin>
