@@ -21,7 +21,8 @@ import javafx.stage.Stage;
 public class UWEAccommodationSystem extends Application {
 
 private ArrayList<Hall> halls = new ArrayList<Hall>(); //create a list of halls 
-    
+private char accountType;   
+
     @Override
     public void start(Stage primaryStage) {
         
@@ -38,9 +39,24 @@ private ArrayList<Hall> halls = new ArrayList<Hall>(); //create a list of halls
         launch(args);
     }
     
+    //Function: userLogin
+    //Description: called when the user logs in to determine which account they are using.
+    //Parameters: String username, String password. Both correspond to a different account.
     public void userLogin(String username, String password)
     {
-        //ask what we are using for database
+        if(username == "warden" && password == "pass")
+            accountType = 'w';
+        else if (username == "hallmanager" && password == "pass")
+            accountType = 'h';
+        else if (username == "root" && password == "pass")
+            accountType = 'r';
+    }
+    
+    //Function getAccType
+    //Description: returns the type of account that the user has logged in as.
+    public char getAccType()
+    {
+        return accountType;
     }
     
     //Function: getHalls
