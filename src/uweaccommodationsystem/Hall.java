@@ -7,7 +7,7 @@ Updated: 27/01/2020
 Authors: Michael Tonkin (Michael2.Tonkin@live.uwe.ac.uk)
 */
 
-package guiforuweaccommodationsystem;
+package uweaccommodationsystem;
 
 import java.util.ArrayList;
 

@@ -9,7 +9,7 @@ Authors: Michael Tonkin (Michael2.Tonkin@live.uwe.ac.uk)
 */
 
 
-package guiforuweaccommodationsystem;
+package uweaccommodationsystem;
 
 
 public class Lease {

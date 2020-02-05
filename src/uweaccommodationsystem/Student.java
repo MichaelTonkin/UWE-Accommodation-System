@@ -5,7 +5,7 @@ Created: 28/01/2020
 Updated: 28/01/2020
 Authors: Michael Tonkin (Michael2.Tonkin@live.uwe.ac.uk)
 */
-package guiforuweaccommodationsystem;
+package uweaccommodationsystem;
 
 
 public class Student {

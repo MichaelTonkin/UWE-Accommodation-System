@@ -6,7 +6,7 @@ Created: 27/01/2020
 Updated: 27/01/2020
 Authors: Michael Tonkin (Michael2.Tonkin@live.uwe.ac.uk)
 */
-package guiforuweaccommodationsystem;
+package uweaccommodationsystem;
 
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -18,31 +18,15 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-public class UWEAccommodationSystem extends Application {
+public class UWEAccommodationSystem{
 
 private ArrayList<Hall> halls = new ArrayList<Hall>(); //create a list of halls 
-private char accountType;   
-
-    @Override
-    public void start(Stage primaryStage) {
-        
-        StackPane root = new StackPane();
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("UWE Accommodation System");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+private static char accountType;   
     
     //Function: userLogin
     //Description: called when the user logs in to determine which account they are using.
     //Parameters: String username, String password. Both correspond to a different account.
-    public void userLogin(String username, String password)
+    public static void userLogin(String username, String password)
     {
         if(username == "warden" && password == "pass")
             accountType = 'w';
@@ -50,11 +34,13 @@ private char accountType;
             accountType = 'h';
         else if (username == "root" && password == "pass")
             accountType = 'r';
+        else
+            accountType = 'n';
     }
     
     //Function getAccType
     //Description: returns the type of account that the user has logged in as.
-    public char getAccType()
+    public static char getAccType()
     {
         return accountType;
     }
