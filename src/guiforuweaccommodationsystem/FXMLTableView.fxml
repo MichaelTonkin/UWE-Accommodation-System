@@ -9,43 +9,31 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiforuweaccommodationsystem.FXMLTableViewController">
-   <bottom>
-      <AnchorPane prefHeight="105.0" prefWidth="900.0">
-         <children>
-            <Button layoutX="817.0" layoutY="148.0" mnemonicParsing="false" onAction="#ChangeScreenButtonClicked" text="Back" AnchorPane.bottomAnchor="26.4" AnchorPane.rightAnchor="42.2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </bottom>
    <top>
       <BorderPane prefHeight="386.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <center>
-            <TableView editable="true" maxHeight="500.0" prefHeight="337.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tableView" editable="true" maxHeight="500.0" prefHeight="337.0" prefWidth="960.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="100.0" text="Lease Num" />
-                <TableColumn prefWidth="100.0" text="Hall Name" />
-                  <TableColumn prefWidth="100.0" text="Hall Num" />
-                  <TableColumn prefWidth="100.0" text="Room Num" />
-                  <TableColumn prefWidth="100.0" text="Student Name" />
-                  <TableColumn prefWidth="100.0" text="Occupacy Status" />
-                  <TableColumn prefWidth="100.0" text="Cleaning Status" />
+                <TableColumn fx:id="ColLeaseNum" prefWidth="100.0" text="Lease Num" />
+                <TableColumn fx:id="ColHallName" prefWidth="100.0" text="Hall Name" />
+                  <TableColumn fx:id="ColHallNum" prefWidth="100.0" text="Hall Num" />
+                  <TableColumn fx:id="ColRoomNum" prefWidth="100.0" text="Room Num" />
+                  <TableColumn fx:id="ColStudentName" prefWidth="100.0" text="Student Name" />
+                  <TableColumn fx:id="ColOccupancy" prefWidth="100.0" text="Occupancy Status" />
+                  <TableColumn fx:id="ColCleaningStatus" prefWidth="100.0" text="Cleaning Status" />
               </columns>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
                <BorderPane.margin>
                   <Insets left="20.0" right="20.0" />
                </BorderPane.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </center>
          <top>
@@ -60,69 +48,43 @@
          </top>
       </BorderPane>
    </top>
-   <right>
-      <AnchorPane prefHeight="256.0" prefWidth="732.0" BorderPane.alignment="TOP_LEFT">
+   <center>
+      <AnchorPane prefHeight="105.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="175.0" layoutY="73.0" />
-            <TextField layoutX="175.0" layoutY="121.0" />
-            <TextField layoutX="175.0" layoutY="172.0" />
-            <TextField layoutX="499.0" layoutY="172.0" />
-            <TextField layoutX="499.0" layoutY="73.0" />
-            <TextField layoutX="499.0" layoutY="121.0" />
-            <Label layoutX="54.0" layoutY="77.0" text="Lease Number" />
-            <Label layoutX="54.0" layoutY="125.0" text="Hall Name" />
-            <Label layoutX="54.0" layoutY="176.0" text="Hall Number" />
-            <Label layoutX="398.0" layoutY="77.0" text="Room Number" />
-            <Label layoutX="398.0" layoutY="125.0" text="Student Name" />
-            <Label layoutX="398.0" layoutY="176.0" text="Occupancy" />
-            <RadioButton layoutX="175.0" layoutY="238.0" mnemonicParsing="false" text="Clean" />
-            <RadioButton layoutX="294.0" layoutY="238.0" mnemonicParsing="false" text="Offline" />
-            <RadioButton layoutX="412.0" layoutY="238.0" mnemonicParsing="false" text="Dirty" />
-            <Label layoutX="54.0" layoutY="238.0" text="Cleaning Status" />
-            <Label layoutX="302.0" layoutY="14.0" text="Information">
+            <Button fx:id="LogoutButton" layoutX="817.0" layoutY="148.0" mnemonicParsing="false" onAction="#ChangeScreenButtonClicked" text="Logout" AnchorPane.bottomAnchor="26.4" AnchorPane.rightAnchor="42.2">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="15.0" />
                </font>
-            </Label>
+            </Button>
+            <AnchorPane layoutX="147.0" layoutY="-7.0" prefHeight="309.0" prefWidth="707.0" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="-7.0">
+               <children>
+                  <TextField fx:id="TextFieldLeaseNum" layoutX="175.0" layoutY="73.0" />
+                  <TextField fx:id="TextFieldHallName" layoutX="175.0" layoutY="121.0" />
+                  <TextField fx:id="TextFieldHallNum" layoutX="175.0" layoutY="172.0" />
+                  <TextField fx:id="TextFieldOccupancy" layoutX="499.0" layoutY="172.0" />
+                  <TextField fx:id="TextFieldRoomNum" layoutX="499.0" layoutY="73.0" />
+                  <TextField fx:id="TextFieldStudentName" layoutX="499.0" layoutY="121.0" />
+                  <Label layoutX="54.0" layoutY="77.0" text="Lease Number" />
+                  <Label layoutX="54.0" layoutY="125.0" text="Hall Name" />
+                  <Label layoutX="54.0" layoutY="176.0" text="Hall Number" />
+                  <Label layoutX="398.0" layoutY="77.0" text="Room Number" />
+                  <Label layoutX="398.0" layoutY="125.0" text="Student Name" />
+                  <Label layoutX="398.0" layoutY="176.0" text="Occupancy" />
+                  <RadioButton layoutX="175.0" layoutY="238.0" mnemonicParsing="false" text="Clean" />
+                  <RadioButton layoutX="250.0" layoutY="238.0" mnemonicParsing="false" text="Offline" />
+                  <RadioButton layoutX="330.0" layoutY="238.0" mnemonicParsing="false" text="Dirty" />
+                  <Label layoutX="54.0" layoutY="238.0" text="Cleaning Status" />
+                  <Label layoutX="302.0" layoutY="14.0" text="Information">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="DeleteButton" layoutX="597.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleDeleteTestProperty" text="Delete" />
+                  <Button fx:id="SaveButton" layoutX="525.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleSaveTestproperty" text="Save" />
+                  <Button fx:id="AddButton" layoutX="448.0" layoutY="234.0" mnemonicParsing="false" text="Add" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-   </right>
-   <left>
-      <VBox prefHeight="308.0" prefWidth="289.0" BorderPane.alignment="TOP_RIGHT">
-         <children>
-            <Label text="Account">
-               <VBox.margin>
-                  <Insets left="55.0" top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" prefWidth="90.0" text="Manager" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets left="50.0" top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="90.0" text="Warden" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets left="50.0" top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="90.0" text="All" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets left="50.0" top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-   </left>
+   </center>
 </BorderPane>
