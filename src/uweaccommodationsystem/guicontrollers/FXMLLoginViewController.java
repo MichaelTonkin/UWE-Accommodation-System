@@ -21,24 +21,29 @@ public class FXMLLoginViewController {
     
     private char account;
     
-    @FXML
-    private Text actiontarget;
-    private TextField usernameField;
-    private PasswordField passwordField;
     
-    @FXML 
- protected void handleSubmitButtonAction(ActionEvent event) {
-        actiontarget.setText("Sign in button pressed");
-    }
- public void ChangeScreenButtonClicked(ActionEvent event) throws Exception {
-     
-        UWEAccommodationSystem.userLogin(usernameField.toString(), passwordField.toString()); //allow the program to process the user's login details.
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    
+ //method: changeScreenButtonClicked
+ //parameters: ActionEvent event - parsed by javafx.
+ //Description: Activates when the login button is clicked, evaluating if the account details are correct before
+ //taking the user to the table view interface.
+ public void changeScreenButtonClicked(ActionEvent event) throws Exception {
+        String usr = usernameField.getText();
+        String pas = passwordField.getText();
+        
+        System.out.println(usr + pas);
+        
+        UWEAccommodationSystem.userLogin(usr, pas); //allow the program to process the user's login details.
         account = UWEAccommodationSystem.getAccType();
         
+        System.out.println(account);
+        
         //check to see if the login was valid (n is an invalid login code).
-        if (account == 'n')
+        if (account != 'n')
         {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLTableView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/FXMLTableView.fxml"));
         Scene scene = new Scene(root);
         //set stage to window and get stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

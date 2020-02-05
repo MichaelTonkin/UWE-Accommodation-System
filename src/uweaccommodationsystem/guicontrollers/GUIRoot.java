@@ -19,7 +19,7 @@ public class GUIRoot extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLLoginView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/FXMLLoginView.fxml"));
         
         Scene scene = new Scene(root, 400, 275);
     

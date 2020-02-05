@@ -28,11 +28,11 @@ private static char accountType;
     //Parameters: String username, String password. Both correspond to a different account.
     public static void userLogin(String username, String password)
     {
-        if(username == "warden" && password == "pass")
+        if(username.equals("warden") && password.equals("pass"))
             accountType = 'w';
-        else if (username == "hallmanager" && password == "pass")
+        else if (username.equals("hallmanager") && password.equals("pass"))
             accountType = 'h';
-        else if (username == "root" && password == "pass")
+        else if (username.equals("root") && password.equals("pass"))
             accountType = 'r';
         else
             accountType = 'n';
