@@ -20,10 +20,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import uweaccommodationsystem.TestProperty;
+import uweaccommodationsystem.UWEAccommodationSystem;
 
 /**
  * FXML Controller class
@@ -31,7 +33,9 @@ import uweaccommodationsystem.TestProperty;
  * @author asia
  */
 public class FXMLTableViewController implements Initializable {
+    
     public TableView<TestProperty> tableView;
+    
     public TableColumn<TestProperty,Integer> ColLeaseNum;
     public TableColumn<TestProperty,String> ColHallName;
     public TableColumn<TestProperty,Integer> ColHallNum;
@@ -39,12 +43,18 @@ public class FXMLTableViewController implements Initializable {
     public TableColumn<TestProperty,String> ColStudentName;
     public TableColumn<TestProperty,String> ColOccupancy;
     public TableColumn<TestProperty,String> ColCleaningStatus;
+    
     public TextField TextFieldLeaseNum;
     public TextField TextFieldHallName;
     public TextField TextFieldHallNum;
     public TextField TextFieldOccupancy;
     public TextField TextFieldRoomNum;
     public TextField TextFieldStudentName;
+    
+    public Button DeleteButton;
+    public Button SaveButton;
+    public Button AddButton;
+    
     private TestProperty TestProperty;
 
     
@@ -203,15 +213,45 @@ public class FXMLTableViewController implements Initializable {
     }
 
 
+    /*
+    Method: intialize
+    Description: populates the screen with details from system data and relevant editting buttons.
+                 Account authentication is partly done here.
+    Parameters: Handled by javafx, do not change.
+    Warning: Do not attempt to call this method anywhere else in the program.
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         ColLeaseNum.setCellValueFactory(new PropertyValueFactory<>("LeaseNum"));
+        ColStudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
         ColHallName.setCellValueFactory(new PropertyValueFactory<>("HallName"));
         ColHallNum.setCellValueFactory(new PropertyValueFactory<>("HallNum"));
-        ColRoomNum.setCellValueFactory(new PropertyValueFactory<>("RoomNum"));
-        ColStudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
+        ColRoomNum.setCellValueFactory(new PropertyValueFactory<>("RoomNum"));        
         ColOccupancy.setCellValueFactory(new PropertyValueFactory<>("Occupancy"));
         ColCleaningStatus.setCellValueFactory(new PropertyValueFactory<>("CleaningStatus"));
+                
+        //Here we are checking that the user has the privillages to view Lease and Student details
+        //if the account is warden then they will be unable to view leasenumber and student name.
+        if(UWEAccommodationSystem.getAccType() == 'w')
+        {
+            ColLeaseNum.setVisible(false);
+            ColStudentName.setVisible(false);
+            
+            TextFieldLeaseNum.setVisible(false);
+            TextFieldHallName.setVisible(false);
+            TextFieldOccupancy.setVisible(false);
+            TextFieldRoomNum.setVisible(false);
+            TextFieldStudentName.setVisible(false);
+            TextFieldHallNum.setVisible(false);
+            
+            DeleteButton.setVisible(false);
+            AddButton.setVisible(false);
+            
+        }
+        
+        
         //show items on tableView
         tableView.setItems(observableList);
         

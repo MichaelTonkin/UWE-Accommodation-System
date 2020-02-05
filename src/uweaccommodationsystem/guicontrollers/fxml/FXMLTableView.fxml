@@ -18,7 +18,7 @@
          <center>
             <TableView fx:id="tableView" editable="true" maxHeight="500.0" prefHeight="337.0" prefWidth="960.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="ColLeaseNum" prefWidth="100.0" text="Lease Num" />
+                <TableColumn fx:id="ColLeaseNum" prefWidth="100.0" text="Lease Num"/>
                 <TableColumn fx:id="ColHallName" prefWidth="100.0" text="Hall Name" />
                   <TableColumn fx:id="ColHallNum" prefWidth="100.0" text="Hall Num" />
                   <TableColumn fx:id="ColRoomNum" prefWidth="100.0" text="Room Num" />
