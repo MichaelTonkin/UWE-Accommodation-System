@@ -81,7 +81,7 @@
                      </font>
                   </Label>
                   <Button fx:id="DeleteButton" layoutX="600.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleDeleteTestProperty" text="Delete" />
-                  <Button fx:id="SaveButton" layoutX="528.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleSaveTestproperty" text="Save" />
+                  <Button fx:id="SaveButton" layoutX="528.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleSaveProperty" text="Save" />
                   <Button fx:id="AddButton" layoutX="451.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add" />
                   <TextField fx:id="TextFieldHallAddress" layoutX="175.0" layoutY="225.0" />
                   <TextField fx:id="TextFieldLeaseDuration" layoutX="504.0" layoutY="73.0" />

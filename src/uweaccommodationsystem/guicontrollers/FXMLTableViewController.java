@@ -101,26 +101,26 @@ public class FXMLTableViewController implements Initializable {
      * Called when the user clicks save.
      */
     @FXML
-    private void handleSaveTestproperty() {
-        
-        /*
-        if (isInputValid())
-        {
-            Property selectedTestproperty = tableView.getSelectionModel().getSelectedItem();
-            selectedTestproperty.setLeaseNum(Integer.parseInt(TextFieldLeaseNum.getText()));
-            selectedTestproperty.setHallName(TextFieldHallName.getText());
-            selectedTestproperty.setHallNum(Integer.parseInt(TextFieldHallNum.getText()));
-            selectedTestproperty.setRoomNum(Integer.parseInt(TextFieldRoomNum.getText()));
-            selectedTestproperty.setStudentName(TextFieldStudentName.getText());
-            selectedTestproperty.setOccupancy(TextFieldOccupancy.getText());
+    private void handleSaveProperty() {
 
+            Property selectedProperty = tableView.getSelectionModel().getSelectedItem();
+            selectedProperty.setLeaseNum(Integer.parseInt(TextFieldLeaseNum.getText()));
+            selectedProperty.setRoomNum(Integer.parseInt(TextFieldRoomNum.getText()));
+            selectedProperty.setStudentName(TextFieldStudentName.getText());
+            selectedProperty.setOccupancy(TextFieldOccupancy.getText());
+
+            if(TextFieldHallName.getText() == null)
+            {
+                selectedProperty.setHallName(TextFieldHallName.getText());
+                selectedProperty.setHallNum(Integer.parseInt(TextFieldHallNum.getText()));
+            }
+            
             //get index from row selected
             int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
             //update tableList
-            observableList.set(selectedIndex, selectedTestproperty);
+            observableList.set(selectedIndex, selectedProperty);
             //show new updated
-            showTestPropertyDetails(selectedTestproperty);
-        }*/
+            showPropertyDetails(selectedProperty);
         }
    
      @FXML
@@ -214,7 +214,7 @@ public class FXMLTableViewController implements Initializable {
  * 
  * @param person the person or null
  */
-    private void showTestPropertyDetails(Property TestProperty) {
+    private void showPropertyDetails(Property TestProperty) {
         if (TestProperty != null) {
             // Fill the labels with info from the person object.
             TextFieldLeaseNum.setText(Integer.toString(TestProperty.getLeaseNum()));
@@ -223,7 +223,12 @@ public class FXMLTableViewController implements Initializable {
             TextFieldRoomNum.setText(Integer.toString(TestProperty.getRoomNum()));
             TextFieldStudentName.setText(TestProperty.getStudentName());
             TextFieldOccupancy.setText(TestProperty.getOccupancy());
-       //     ColCleaningStatus.setText(Property.getCleaningStatus());
+       
+            //we disable the hall category because we do not want to create a new hall every time we edit.
+            TextFieldHallName.setEditable(false);
+            TextFieldHallNum.setEditable(false);            
+            TextFieldHallAddress.setEditable(false);
+            
 
         } else {
             // Person is null, remove all the text.
@@ -281,9 +286,9 @@ public class FXMLTableViewController implements Initializable {
         tableView.setItems(observableList);
         
         // Clear Testproperty details.
-        showTestPropertyDetails(null);
+        showPropertyDetails(null);
         // Listen for selection changes and show the person details when changed.
-        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showTestPropertyDetails(newValue));
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPropertyDetails(newValue));
     }
         ObservableList<Property> observableList = FXCollections.observableArrayList(
                 //new Property(Hall test)
