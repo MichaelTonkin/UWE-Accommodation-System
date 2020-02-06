@@ -1,7 +1,6 @@
 /*
 Class: UWEAccommodationSystem
-Description: constitutes the driver class. Allows for access to the rest of the
-    program.
+Description: Handles the system login.
 Created: 27/01/2020
 Updated: 27/01/2020
 Authors: Michael Tonkin (Michael2.Tonkin@live.uwe.ac.uk)
@@ -20,9 +19,10 @@ import javafx.stage.Stage;
 
 public class UWEAccommodationSystem{
 
-private ArrayList<Hall> halls = new ArrayList<Hall>(); //create a list of halls 
+private static ArrayList<Hall> halls = new ArrayList<Hall>(); //create a list of halls 
 private static char accountType;   
     
+
     //Function: userLogin
     //Description: called when the user logs in to determine which account they are using.
     //Parameters: String username, String password. Both correspond to a different account.
@@ -48,8 +48,13 @@ private static char accountType;
     //Function: getHalls
     //Description: gets halls to be displayed on screen later
     //Warnings: update description when we figures out where this goes
-    public ArrayList getHalls()
+    public static ArrayList getHalls()
     {
 	return halls;
+    }
+    
+    public static void addHall(Hall hall)
+    {
+	halls.add(hall);
     }
 }

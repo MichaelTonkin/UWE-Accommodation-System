@@ -24,7 +24,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import uweaccommodationsystem.TestProperty;
+import uweaccommodationsystem.Hall;
+import uweaccommodationsystem.Property;
 import uweaccommodationsystem.UWEAccommodationSystem;
 
 /**
@@ -34,19 +35,22 @@ import uweaccommodationsystem.UWEAccommodationSystem;
  */
 public class FXMLTableViewController implements Initializable {
     
-    public TableView<TestProperty> tableView;
+    public TableView<Property> tableView;
     
-    public TableColumn<TestProperty,Integer> ColLeaseNum;
-    public TableColumn<TestProperty,String> ColHallName;
-    public TableColumn<TestProperty,Integer> ColHallNum;
-    public TableColumn<TestProperty,Integer> ColRoomNum;
-    public TableColumn<TestProperty,String> ColStudentName;
-    public TableColumn<TestProperty,String> ColOccupancy;
-    public TableColumn<TestProperty,String> ColCleaningStatus;
+    public TableColumn<Property,Integer> ColLeaseNum;
+    public TableColumn<Property,String> ColHallName;
+    public TableColumn<Property,Integer> ColHallNum;
+    public TableColumn<Property,Integer> ColRoomNum;
+    public TableColumn<Property,String> ColStudentName;
+    public TableColumn<Property,String> ColOccupancy;
+    public TableColumn<Property,String> ColCleaningStatus;
     
     public TextField TextFieldLeaseNum;
+    public TextField TextFieldLeaseDuration;
     public TextField TextFieldHallName;
     public TextField TextFieldHallNum;
+    public TextField TextFieldHallAddress;
+    public TextField TextFieldHallTel;
     public TextField TextFieldOccupancy;
     public TextField TextFieldRoomNum;
     public TextField TextFieldStudentName;
@@ -54,11 +58,10 @@ public class FXMLTableViewController implements Initializable {
     public Button DeleteButton;
     public Button SaveButton;
     public Button AddButton;
+    public Button handleAddButton;
     
-    private TestProperty TestProperty;
+    private Property TestProperty;
 
-    
-    
 
     @FXML
     public void ChangeScreenButtonClicked(ActionEvent event) throws Exception {
@@ -72,13 +75,36 @@ public class FXMLTableViewController implements Initializable {
         window.show();
     }
     
+    /*
+    Method: handleAddButton
+    Description: evalutes user input and creates necessary objects.
+    */
+    @FXML
+    private void handleAddButton()
+    {
+               
+        if(isInputValid())
+        {
+            //Create a new hall if we have all the necessary details
+            if(!TextFieldHallName.getText().equals("") 
+                    && !TextFieldHallNum.getText().equals("") 
+                    && !TextFieldHallAddress.getText().equals(""))
+            {
+                //Create new hall object
+                Hall hall = new Hall(TextFieldHallName.getText(), Integer.parseInt(TextFieldHallNum.getText()), TextFieldHallAddress.getText(), TextFieldHallTel.getText());
+                UWEAccommodationSystem.addHall(hall);
+            }
+        }
+    }
+    
     /**
      * Called when the user clicks save.
      */
     @FXML
     private void handleSaveTestproperty() {
-        if (isInputValid()){
-        TestProperty selectedTestproperty = tableView.getSelectionModel().getSelectedItem();
+        
+        /* if (isInputValid()){
+        Property selectedTestproperty = tableView.getSelectionModel().getSelectedItem();
         selectedTestproperty.setLeaseNum(Integer.parseInt(TextFieldLeaseNum.getText()));
         selectedTestproperty.setHallName(TextFieldHallName.getText());
         selectedTestproperty.setHallNum(Integer.parseInt(TextFieldHallNum.getText()));
@@ -92,7 +118,7 @@ public class FXMLTableViewController implements Initializable {
         observableList.set(selectedIndex, selectedTestproperty);
         //show new updated
         showTestPropertyDetails(selectedTestproperty);
-        }
+        }*/
         }
    
      @FXML
@@ -186,7 +212,7 @@ public class FXMLTableViewController implements Initializable {
  * 
  * @param person the person or null
  */
-    private void showTestPropertyDetails(TestProperty TestProperty) {
+    private void showTestPropertyDetails(Property TestProperty) {
         if (TestProperty != null) {
             // Fill the labels with info from the person object.
             TextFieldLeaseNum.setText(Integer.toString(TestProperty.getLeaseNum()));
@@ -195,7 +221,7 @@ public class FXMLTableViewController implements Initializable {
             TextFieldRoomNum.setText(Integer.toString(TestProperty.getRoomNum()));
             TextFieldStudentName.setText(TestProperty.getStudentName());
             TextFieldOccupancy.setText(TestProperty.getOccupancy());
-       //     ColCleaningStatus.setText(TestProperty.getCleaningStatus());
+       //     ColCleaningStatus.setText(Property.getCleaningStatus());
             
 
             // TODO: We need a way to convert the birthday into a String! 
@@ -260,9 +286,9 @@ public class FXMLTableViewController implements Initializable {
         // Listen for selection changes and show the person details when changed.
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showTestPropertyDetails(newValue));
     }
-        ObservableList<TestProperty> observableList = FXCollections.observableArrayList(
-                new TestProperty(564,"Michael",16,69,"Christy","occupied","dirty")
-                ,new TestProperty(123,"Michael1",156,679,"Christy1","occupied","clean")
+        ObservableList<Property> observableList = FXCollections.observableArrayList(
+                //new Property(Hall test)
+               // ,new Property(123,"Michael1",156,679,"Christy1","occupied","clean")
         );
                
         

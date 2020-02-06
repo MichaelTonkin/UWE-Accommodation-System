@@ -11,14 +11,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="uweaccommodationsystem.guicontrollers.FXMLTableViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uweaccommodationsystem.guicontrollers.FXMLTableViewController">
    <top>
       <BorderPane prefHeight="386.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <center>
             <TableView fx:id="tableView" editable="true" maxHeight="500.0" prefHeight="337.0" prefWidth="960.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="ColLeaseNum" prefWidth="100.0" text="Lease Num"/>
+                <TableColumn fx:id="ColLeaseNum" prefWidth="100.0" text="Lease Num" />
                 <TableColumn fx:id="ColHallName" prefWidth="100.0" text="Hall Name" />
                   <TableColumn fx:id="ColHallNum" prefWidth="100.0" text="Hall Num" />
                   <TableColumn fx:id="ColRoomNum" prefWidth="100.0" text="Room Num" />
@@ -62,27 +61,31 @@
                   <TextField fx:id="TextFieldLeaseNum" layoutX="175.0" layoutY="73.0" />
                   <TextField fx:id="TextFieldHallName" layoutX="175.0" layoutY="121.0" />
                   <TextField fx:id="TextFieldHallNum" layoutX="175.0" layoutY="172.0" />
-                  <TextField fx:id="TextFieldOccupancy" layoutX="499.0" layoutY="172.0" />
-                  <TextField fx:id="TextFieldRoomNum" layoutX="499.0" layoutY="73.0" />
-                  <TextField fx:id="TextFieldStudentName" layoutX="499.0" layoutY="121.0" />
+                  <TextField fx:id="TextFieldOccupancy" layoutX="504.0" layoutY="222.0" />
+                  <TextField fx:id="TextFieldRoomNum" layoutX="504.0" layoutY="123.0" />
+                  <TextField fx:id="TextFieldStudentName" layoutX="504.0" layoutY="171.0" />
                   <Label layoutX="54.0" layoutY="77.0" text="Lease Number" />
                   <Label layoutX="54.0" layoutY="125.0" text="Hall Name" />
                   <Label layoutX="54.0" layoutY="176.0" text="Hall Number" />
-                  <Label layoutX="398.0" layoutY="77.0" text="Room Number" />
-                  <Label layoutX="398.0" layoutY="125.0" text="Student Name" />
-                  <Label layoutX="398.0" layoutY="176.0" text="Occupancy" />
-                  <RadioButton layoutX="175.0" layoutY="238.0" mnemonicParsing="false" text="Clean" />
-                  <RadioButton layoutX="250.0" layoutY="238.0" mnemonicParsing="false" text="Offline" />
-                  <RadioButton layoutX="330.0" layoutY="238.0" mnemonicParsing="false" text="Dirty" />
-                  <Label layoutX="54.0" layoutY="238.0" text="Cleaning Status" />
+                  <Label layoutX="55.0" layoutY="229.0" text="Hall Address" />
+                  <Label layoutX="403.0" layoutY="127.0" text="Room Number" />
+                  <Label layoutX="403.0" layoutY="175.0" text="Student Name" />
+                  <Label layoutX="403.0" layoutY="226.0" text="Occupancy" />
+                  <RadioButton layoutX="178.0" layoutY="274.0" mnemonicParsing="false" text="Clean" />
+                  <RadioButton layoutX="253.0" layoutY="274.0" mnemonicParsing="false" text="Offline" />
+                  <RadioButton layoutX="333.0" layoutY="274.0" mnemonicParsing="false" text="Dirty" />
+                  <Label layoutX="57.0" layoutY="274.0" text="Cleaning Status" />
                   <Label layoutX="302.0" layoutY="14.0" text="Information">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="DeleteButton" layoutX="597.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleDeleteTestProperty" text="Delete" />
-                  <Button fx:id="SaveButton" layoutX="525.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleSaveTestproperty" text="Save" />
-                  <Button fx:id="AddButton" layoutX="448.0" layoutY="234.0" mnemonicParsing="false" text="Add" />
+                  <Button fx:id="DeleteButton" layoutX="600.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleDeleteTestProperty" text="Delete" />
+                  <Button fx:id="SaveButton" layoutX="528.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSaveTestproperty" text="Save" />
+                  <Button fx:id="AddButton" layoutX="451.0" layoutY="270.0" mnemonicParsing="false" text="Add" />
+                  <TextField layoutX="175.0" layoutY="225.0" />
+                  <TextField fx:id="TextFieldLeaseDuration" layoutX="504.0" layoutY="73.0" />
+                  <Label layoutX="403.0" layoutY="77.0" text="Lease Duration" />
                </children>
             </AnchorPane>
          </children>

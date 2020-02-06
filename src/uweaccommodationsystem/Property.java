@@ -12,7 +12,8 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author asia
  */
-public class TestProperty {
+public class Property {
+    
     private SimpleIntegerProperty LeaseNum;
     private SimpleStringProperty HallName;
     private SimpleIntegerProperty HallNum;
@@ -21,7 +22,8 @@ public class TestProperty {
     private SimpleStringProperty Occupancy;
     private SimpleStringProperty CleaningStatus;
     
-    public TestProperty(int LeaseNum,String HallName,int HallNum,int RoomNum,String StudentName,String Occupancy,String CleaningStatus ){
+    public Property(int LeaseNum,String HallName,int HallNum,int RoomNum,String StudentName,String Occupancy,String CleaningStatus ){
+        
      this.LeaseNum = new SimpleIntegerProperty(LeaseNum);
      this.HallName = new SimpleStringProperty(HallName);
      this.HallNum = new SimpleIntegerProperty(HallNum);
@@ -32,7 +34,7 @@ public class TestProperty {
   
     }
 
-    TestProperty() {
+    Property() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
