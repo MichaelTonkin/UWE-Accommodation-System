@@ -38,6 +38,11 @@ public class Hall {
         return hallAddress;
     }
     
+    public int getHallNum()
+    {
+        return hallNum;
+    }
+    
     //function: addRoom
     //description: adds a room to our list of rooms for this hall.
     public void addRoom(Room room)

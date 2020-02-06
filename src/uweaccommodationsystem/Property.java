@@ -14,23 +14,23 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Property {
     
-    private SimpleIntegerProperty LeaseNum;
-    private SimpleStringProperty HallName;
-    private SimpleIntegerProperty HallNum;
-    private SimpleIntegerProperty RoomNum;
-    private SimpleStringProperty StudentName;
-    private SimpleStringProperty Occupancy;
-    private SimpleStringProperty CleaningStatus;
+    private SimpleIntegerProperty leaseNum;
+    private SimpleStringProperty hallName;
+    private SimpleIntegerProperty hallNum;
+    private SimpleIntegerProperty roomNum;
+    private SimpleStringProperty studentName;
+    private SimpleStringProperty occupancy;
+    private SimpleStringProperty cleaningStatus;
     
-    public Property(int LeaseNum,String HallName,int HallNum,int RoomNum,String StudentName,String Occupancy,String CleaningStatus ){
+    public Property(int leaseNum, String hallName, int hallNum, int roomNum, String studentName, String occupancy, String cleaningStatus ){
         
-     this.LeaseNum = new SimpleIntegerProperty(LeaseNum);
-     this.HallName = new SimpleStringProperty(HallName);
-     this.HallNum = new SimpleIntegerProperty(HallNum);
-     this.RoomNum = new SimpleIntegerProperty(RoomNum);
-     this.StudentName = new SimpleStringProperty(StudentName);
-     this.Occupancy = new SimpleStringProperty(Occupancy);
-     this.CleaningStatus = new SimpleStringProperty(CleaningStatus);
+     this.leaseNum = new SimpleIntegerProperty(leaseNum);
+     this.hallName = new SimpleStringProperty(hallName);
+     this.hallNum = new SimpleIntegerProperty(hallNum);
+     this.roomNum = new SimpleIntegerProperty(roomNum);
+     this.studentName = new SimpleStringProperty(studentName);
+     this.occupancy = new SimpleStringProperty(occupancy);
+     this.cleaningStatus = new SimpleStringProperty(cleaningStatus);
   
     }
 
@@ -38,60 +38,60 @@ public class Property {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setLeaseNum(int LeaseNum) {
-        this.LeaseNum = new SimpleIntegerProperty(LeaseNum);
+    public void setLeaseNum(int leaseNum) {
+        this.leaseNum = new SimpleIntegerProperty(leaseNum);
     }
 
-    public void setHallName(String HallName) {
-        this.HallName = new SimpleStringProperty(HallName);
+    public void setHallName(String hallName) {
+        this.hallName = new SimpleStringProperty(hallName);
     }
 
-    public void setHallNum(int HallNum) {
-        this.HallNum = new SimpleIntegerProperty(HallNum);
+    public void setHallNum(int hallNum) {
+        this.hallNum = new SimpleIntegerProperty(hallNum);
     }
 
-    public void setRoomNum(int RoomNum) {
-        this.RoomNum = new SimpleIntegerProperty(RoomNum);
+    public void setRoomNum(int roomNum) {
+        this.roomNum = new SimpleIntegerProperty(roomNum);
     }
 
-    public void setStudentName(String StudentName) {
-        this.StudentName = new SimpleStringProperty(StudentName);
+    public void setStudentName(String studentName) {
+        this.studentName = new SimpleStringProperty(studentName);
     }
 
-    public void setOccupancy(String Occupancy) {
-        this.Occupancy = new SimpleStringProperty(Occupancy);
+    public void setOccupancy(String occupancy) {
+        this.occupancy = new SimpleStringProperty(occupancy);
     }
 
-    public void setCleaningStatus(String CleaningStatus) {
-        this.CleaningStatus = new SimpleStringProperty(CleaningStatus);
+    public void setCleaningStatus(String cleaningStatus) {
+        this.cleaningStatus = new SimpleStringProperty(cleaningStatus);
     }
 
     public int getLeaseNum() {
-        return LeaseNum.get();
+        return leaseNum.get();
     }
 
     public String getHallName() {
-        return HallName.get();
+        return hallName.get();
     }
 
     public int getHallNum() {
-        return HallNum.get();
+        return hallNum.get();
     }
 
     public int getRoomNum() {
-        return RoomNum.get();
+        return roomNum.get();
     }
 
     public String getStudentName() {
-        return StudentName.get();
+        return studentName.get();
     }
 
     public String getOccupancy() {
-        return Occupancy.get();
+        return occupancy.get();
     }
 
     public String getCleaningStatus() {
-        return CleaningStatus.get();
+        return cleaningStatus.get();
     }
     
     

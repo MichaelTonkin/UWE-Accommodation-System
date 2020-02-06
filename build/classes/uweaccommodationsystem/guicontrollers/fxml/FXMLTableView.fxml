@@ -56,7 +56,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <AnchorPane layoutX="147.0" layoutY="-7.0" prefHeight="309.0" prefWidth="707.0" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="-7.0">
+            <AnchorPane layoutX="147.0" layoutY="-7.0" prefHeight="348.0" prefWidth="707.0" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="-7.0">
                <children>
                   <TextField fx:id="TextFieldLeaseNum" layoutX="175.0" layoutY="73.0" />
                   <TextField fx:id="TextFieldHallName" layoutX="175.0" layoutY="121.0" />
@@ -71,21 +71,23 @@
                   <Label layoutX="403.0" layoutY="127.0" text="Room Number" />
                   <Label layoutX="403.0" layoutY="175.0" text="Student Name" />
                   <Label layoutX="403.0" layoutY="226.0" text="Occupancy" />
-                  <RadioButton layoutX="178.0" layoutY="274.0" mnemonicParsing="false" text="Clean" />
-                  <RadioButton layoutX="253.0" layoutY="274.0" mnemonicParsing="false" text="Offline" />
-                  <RadioButton layoutX="333.0" layoutY="274.0" mnemonicParsing="false" text="Dirty" />
-                  <Label layoutX="57.0" layoutY="274.0" text="Cleaning Status" />
+                  <RadioButton layoutX="178.0" layoutY="313.0" mnemonicParsing="false" text="Clean" />
+                  <RadioButton layoutX="253.0" layoutY="313.0" mnemonicParsing="false" text="Offline" />
+                  <RadioButton layoutX="333.0" layoutY="313.0" mnemonicParsing="false" text="Dirty" />
+                  <Label layoutX="57.0" layoutY="313.0" text="Cleaning Status" />
                   <Label layoutX="302.0" layoutY="14.0" text="Information">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="DeleteButton" layoutX="600.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleDeleteTestProperty" text="Delete" />
-                  <Button fx:id="SaveButton" layoutX="528.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSaveTestproperty" text="Save" />
-                  <Button fx:id="AddButton" layoutX="451.0" layoutY="270.0" mnemonicParsing="false" text="Add" />
-                  <TextField layoutX="175.0" layoutY="225.0" />
+                  <Button fx:id="DeleteButton" layoutX="600.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleDeleteTestProperty" text="Delete" />
+                  <Button fx:id="SaveButton" layoutX="528.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleSaveTestproperty" text="Save" />
+                  <Button fx:id="AddButton" layoutX="451.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add" />
+                  <TextField fx:id="TextFieldHallAddress" layoutX="175.0" layoutY="225.0" />
                   <TextField fx:id="TextFieldLeaseDuration" layoutX="504.0" layoutY="73.0" />
                   <Label layoutX="403.0" layoutY="77.0" text="Lease Duration" />
+                  <TextField fx:id="TextFieldHallTel" layoutX="175.0" layoutY="271.0" />
+                  <Label layoutX="53.0" layoutY="275.0" text="Hall Telephone" />
                </children>
             </AnchorPane>
          </children>
