@@ -65,7 +65,7 @@ public class FXMLTableViewController implements Initializable {
 
     @FXML
     public void ChangeScreenButtonClicked(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLLoginView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/FXMLLoginView.fxml"));
         
         Scene scene = new Scene(root);
         //set stage to window and get stage information
