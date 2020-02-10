@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -51,9 +52,10 @@ public class FXMLTableViewController implements Initializable {
     public TextField TextFieldHallNum;
     public TextField TextFieldHallAddress;
     public TextField TextFieldHallTel;
-    public TextField TextFieldOccupancy;
     public TextField TextFieldRoomNum;
     public TextField TextFieldStudentName;
+    public ComboBox comboBoxCleaningStatus;
+    public ComboBox comboBoxOccupancy;
     
     public Button DeleteButton;
     public Button SaveButton;
@@ -107,7 +109,8 @@ public class FXMLTableViewController implements Initializable {
             selectedProperty.setLeaseNum(Integer.parseInt(TextFieldLeaseNum.getText()));
             selectedProperty.setRoomNum(Integer.parseInt(TextFieldRoomNum.getText()));
             selectedProperty.setStudentName(TextFieldStudentName.getText());
-            selectedProperty.setOccupancy(TextFieldOccupancy.getText());
+            selectedProperty.setOccupancy((String) comboBoxOccupancy.getValue());
+            selectedProperty.setCleaningStatus((String) comboBoxCleaningStatus.getValue());
 
             if(TextFieldHallName.getText() == null)
             {
@@ -152,9 +155,11 @@ public class FXMLTableViewController implements Initializable {
         if (TextFieldHallName.getText() == null || TextFieldHallName.getText().length() == 0) {
             errorMessage += "No valid hall name!\n"; 
         }
+        /*
         if (TextFieldOccupancy.getText() == null || TextFieldOccupancy.getText().length() == 0) {
             errorMessage += "No valid occupancy!\n"; 
         }
+        */
         if (TextFieldStudentName.getText() == null || TextFieldStudentName.getText().length() == 0) {
             errorMessage += "No valid student name!\n"; 
         }
@@ -222,7 +227,8 @@ public class FXMLTableViewController implements Initializable {
             TextFieldHallNum.setText(Integer.toString(TestProperty.getHallNum()));
             TextFieldRoomNum.setText(Integer.toString(TestProperty.getRoomNum()));
             TextFieldStudentName.setText(TestProperty.getStudentName());
-            TextFieldOccupancy.setText(TestProperty.getOccupancy());
+            comboBoxOccupancy.setValue(TestProperty.getOccupancy());
+            comboBoxCleaningStatus.setValue(TestProperty.getCleaningStatus());
        
             //we disable the hall category because we do not want to create a new hall every time we edit.
             TextFieldHallName.setEditable(false);
@@ -237,8 +243,9 @@ public class FXMLTableViewController implements Initializable {
             TextFieldHallNum.setText("");
             TextFieldRoomNum.setText("");
             TextFieldStudentName.setText("");
-            TextFieldOccupancy.setText("");
-        //    ColCleaningStatus.setText("");
+            comboBoxOccupancy.setValue("");
+            comboBoxCleaningStatus.setValue("");
+
         }
     }
 
@@ -269,13 +276,10 @@ public class FXMLTableViewController implements Initializable {
             ColLeaseNum.setVisible(false);
             ColStudentName.setVisible(false);
             
-            TextFieldLeaseNum.setVisible(false);
-            TextFieldHallName.setVisible(false);
-            TextFieldOccupancy.setVisible(false);
-            TextFieldRoomNum.setVisible(false);
-            TextFieldStudentName.setVisible(false);
-            TextFieldHallNum.setVisible(false);
-            
+            TextFieldLeaseNum.setDisable(true);
+            TextFieldLeaseDuration.setDisable(true);
+            TextFieldStudentName.setDisable(true);
+            comboBoxOccupancy.setDisable(true);
             DeleteButton.setVisible(false);
             AddButton.setVisible(false);
             
@@ -285,6 +289,15 @@ public class FXMLTableViewController implements Initializable {
         //show items on tableView
         tableView.setItems(observableList);
         
+        //set initial cleaning status to clean
+        comboBoxCleaningStatus.setValue("clean");
+        comboBoxCleaningStatus.setItems(cleaningStatusList);
+        
+        //set initial occupancy to unoccupied
+        comboBoxOccupancy.setValue("unoccupied");
+        comboBoxOccupancy.setItems(occupancyList);
+        
+        
         // Clear Testproperty details.
         showPropertyDetails(null);
         // Listen for selection changes and show the person details when changed.
@@ -292,7 +305,11 @@ public class FXMLTableViewController implements Initializable {
     }
         ObservableList<Property> observableList = FXCollections.observableArrayList(
                 //new Property(Hall test)
-               // ,new Property(123,"Michael1",156,679,"Christy1","occupied","clean")
+               new Property(123,"Michael1",156,679,"Christy1","occupied","clean")
         );
+        
+        ObservableList<String> cleaningStatusList = FXCollections.observableArrayList("clean","dirty","offline");
+        ObservableList<String> occupancyList = FXCollections.observableArrayList("occupied","unoccupied");
+        
                    
 }
