@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uweaccommodationsystem;
+package uweaccommodationsystem.guicontrollers;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-/**
- *
- * @author asia
- */
 public class Property {
-    
+         
     private SimpleIntegerProperty leaseNum;
     private SimpleStringProperty hallName;
     private SimpleIntegerProperty hallNum;
@@ -21,21 +18,61 @@ public class Property {
     private SimpleStringProperty studentName;
     private SimpleStringProperty occupancy;
     private SimpleStringProperty cleaningStatus;
-    
-    public Property(int leaseNum, String hallName, int hallNum, int roomNum, String studentName, String occupancy, String cleaningStatus ){
+    private SimpleIntegerProperty studentID;
+    private SimpleDoubleProperty monthlyRentRate;
+    private SimpleIntegerProperty leaseDuration;
+    private SimpleStringProperty hallTel;
+    private SimpleStringProperty hallAddress; 
+
+         
+    public Property(String hallName, 
+                    int hallNum, 
+                    String hallAddress, 
+                    String hallTel, 
+                    int roomNum, 
+                    int leaseNum,
+                    int leaseDuration,
+                    double monthlyRentRate,
+                    String studentName, 
+                    int studentID, 
+                    String occupancy, 
+                    String cleaningStatus ){
         
-     this.leaseNum = new SimpleIntegerProperty(leaseNum);
      this.hallName = new SimpleStringProperty(hallName);
      this.hallNum = new SimpleIntegerProperty(hallNum);
+     this.hallAddress = new SimpleStringProperty(hallAddress);
+     this.hallTel = new SimpleStringProperty(hallTel);
      this.roomNum = new SimpleIntegerProperty(roomNum);
+     this.leaseNum = new SimpleIntegerProperty(leaseNum);
+     this.leaseDuration = new SimpleIntegerProperty(leaseDuration);
+     this.monthlyRentRate = new SimpleDoubleProperty(monthlyRentRate);
      this.studentName = new SimpleStringProperty(studentName);
+     this.studentID = new SimpleIntegerProperty(studentID);
      this.occupancy = new SimpleStringProperty(occupancy);
      this.cleaningStatus = new SimpleStringProperty(cleaningStatus);
+     
+     
   
     }
 
-    Property() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setStudentID(int studentID) {
+        this.studentID = new SimpleIntegerProperty(studentID);
+    }
+
+    public void setMonthlyRentRate(double monthlyRentRate) {
+        this.monthlyRentRate = new SimpleDoubleProperty(monthlyRentRate);
+    }
+
+    public void setLeaseDuration(int leaseDuration) {
+        this.leaseDuration =  new SimpleIntegerProperty(leaseDuration);
+    }
+
+    public void setHallTel(String hallTel) {
+        this.hallTel = new SimpleStringProperty(hallTel);
+    }
+
+    public void setHallAddress(String hallAddress) {
+        this.hallAddress = new SimpleStringProperty(hallAddress);
     }
 
     public void setLeaseNum(int leaseNum) {
@@ -94,6 +131,25 @@ public class Property {
         return cleaningStatus.get();
     }
     
+    public int getStudentID() {
+        return studentID.get();
+    }
+
+    public double getMonthlyRentRate() {
+        return monthlyRentRate.get();
+    }
+
+    public int getLeaseDuration() {
+        return leaseDuration.get();
+    }
+
+    public String getHallTel() {
+        return hallTel.get();
+    }
+
+    public String getHallAddress() {
+        return hallAddress.get();
+    }
     
     
 }

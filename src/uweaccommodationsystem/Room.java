@@ -2,7 +2,7 @@ package uweaccommodationsystem;
 
 public class Room{
     private int roomNumber;
-    private boolean roomStatus; //false = unoccupied, true = occupied
+    private String roomStatus; //false = unoccupied, true = occupied
     private String cleaningStatus;
     private Lease lease;
     
@@ -16,7 +16,7 @@ public class Room{
         return this.roomNumber; 
     }
     
-    public boolean getRoomstatus()
+    public String getRoomStatus()
     {
         return this.roomStatus;
     }
@@ -31,7 +31,7 @@ public class Room{
         this.cleaningStatus = cleaningStatus;
     }
   
-    public void setRoomStatus(boolean roomStatus)
+    public void setRoomStatus(String roomStatus)
     {
         this.roomStatus = roomStatus;
     }
@@ -40,5 +40,9 @@ public class Room{
     {
         this.lease = lease;
     }
-
+    
+    public Lease getLease()
+    {
+        return this.lease;
+    }
 }

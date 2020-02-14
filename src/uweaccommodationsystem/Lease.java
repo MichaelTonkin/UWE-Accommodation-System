@@ -16,7 +16,7 @@ public class Lease {
     
     private int duration;
     private Student student;
-    private String leaseID;
+    private int leaseID;
     private String address;
     private double rentRateMonthly;
     
@@ -27,7 +27,7 @@ public class Lease {
                 leaseID - a unique id for the lease object.
                 addresss - the address associated with the lease.
     */
-    public Lease(int duration, String leaseID, String address)
+    public Lease(int duration, int leaseID, String address)
     {
         this.duration = duration;
         this.leaseID = leaseID;
@@ -42,6 +42,11 @@ public class Lease {
         this.student = student;
     }
     
+    public Student getStudent()
+    {
+        return this.student;
+    }
+    
     public void setRentRate(double rentRate)
     {
         this.rentRateMonthly = rentRate;
@@ -52,7 +57,7 @@ public class Lease {
         return rentRateMonthly;
     }
     
-    public String getLeaseID()
+    public int getLeaseID()
     {
         return leaseID;
     }

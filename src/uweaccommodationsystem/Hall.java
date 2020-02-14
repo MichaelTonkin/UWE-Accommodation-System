@@ -20,12 +20,17 @@ public class Hall {
     private String hallTelNum;
     
     //initialise all variables when creating a new hall
-    public Hall(String hallName, int hallNum, String hallTelNum, String hallAddress)
+    public Hall(String hallName, int hallNum, String hallAddress, String hallTelNum)
     {
         this.hallName = hallName;
         this.hallNum = hallNum;
         this.hallAddress = hallAddress;
         this.hallTelNum = hallTelNum;
+    }
+    
+    public String getHallTel()
+    {
+        return hallTelNum;
     }
     
     public String getHallName()

@@ -21,11 +21,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import uweaccommodationsystem.Hall;
-import uweaccommodationsystem.Property;
 import uweaccommodationsystem.UWEAccommodationSystem;
 
 /**
@@ -47,20 +48,29 @@ public class FXMLTableViewController implements Initializable {
     
     public TextField TextFieldLeaseNum;
     public TextField TextFieldLeaseDuration;
-    public TextField TextFieldHallName;
-    public TextField TextFieldHallNum;
-    public TextField TextFieldHallAddress;
-    public TextField TextFieldHallTel;
-    public TextField TextFieldOccupancy;
-    public TextField TextFieldRoomNum;
     public TextField TextFieldStudentName;
+    public TextField TextFieldStudentID;
+    public TextField TextFieldMonthlyRentRate;
+    public ComboBox comboBoxCleaningStatus;
+    public ComboBox comboBoxOccupancy;
+    
+    public Label labelHallName;
+    public Label labelHallNum;
+    public Label labelHallAddress;
+    public Label labelHallTel;
+    public Label labelRoomNum;
+    public Label labelLeaseNum;
+    public Label labelLeaseDuration;
+    public Label labelStudentName;
+    public Label labelStudentID;
+    public Label labelMonthlyRentRate;
+    public Label labelOccupancy;
+    public Label labelCleaningStatus;
     
     public Button DeleteButton;
     public Button SaveButton;
-    public Button AddButton;
-    public Button handleAddButton;
-    
-    private Property TestProperty;
+
+  
 
 
     @FXML
@@ -75,46 +85,22 @@ public class FXMLTableViewController implements Initializable {
         window.show();
     }
     
-    /*
-    Method: handleAddButton
-    Description: evalutes user input and creates necessary objects.
-    */
-    @FXML
-    private void handleAddButton()
-    {
-               
-        //Create a new hall if we have all the necessary details
-        if(!TextFieldHallName.getText().equals("") 
-                && !TextFieldHallNum.getText().equals("") 
-                && !TextFieldHallAddress.getText().equals("")
-                && !TextFieldHallTel.getText().equals(""))
-        {
-            //Create new hall object
-            Hall hall = new Hall(TextFieldHallName.getText(), Integer.parseInt(TextFieldHallNum.getText()), TextFieldHallAddress.getText(), TextFieldHallTel.getText());
-            UWEAccommodationSystem.addHall(hall);    
-            observableList.add(new Property(0, hall.getHallName(), hall.getHallNum(), 0, "", "Empty", "Offline"));
-        }
-        
-    }
+
     
     /**
      * Called when the user clicks save.
      */
     @FXML
     private void handleSaveProperty() {
-
+        if(isInputValid()){
             Property selectedProperty = tableView.getSelectionModel().getSelectedItem();
             selectedProperty.setLeaseNum(Integer.parseInt(TextFieldLeaseNum.getText()));
-            selectedProperty.setRoomNum(Integer.parseInt(TextFieldRoomNum.getText()));
             selectedProperty.setStudentName(TextFieldStudentName.getText());
-            selectedProperty.setOccupancy(TextFieldOccupancy.getText());
+            selectedProperty.setStudentID(Integer.parseInt(TextFieldStudentID.getText()));
+            selectedProperty.setMonthlyRentRate(Double.parseDouble(TextFieldMonthlyRentRate.getText()));
+            selectedProperty.setOccupancy((String) comboBoxOccupancy.getValue());
+            selectedProperty.setCleaningStatus((String) comboBoxCleaningStatus.getValue());
 
-            if(TextFieldHallName.getText() == null)
-            {
-                selectedProperty.setHallName(TextFieldHallName.getText());
-                selectedProperty.setHallNum(Integer.parseInt(TextFieldHallNum.getText()));
-            }
-            
             //get index from row selected
             int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
             //update tableList
@@ -122,10 +108,11 @@ public class FXMLTableViewController implements Initializable {
             //show new updated
             showPropertyDetails(selectedProperty);
         }
+    }
    
      @FXML
     //actions for delete property
-    private void handleDeleteTestProperty() {
+    private void handleDeleteProperty() {
         int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
            tableView.getItems().remove(selectedIndex);
@@ -149,12 +136,11 @@ public class FXMLTableViewController implements Initializable {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (TextFieldHallName.getText() == null || TextFieldHallName.getText().length() == 0) {
-            errorMessage += "No valid hall name!\n"; 
-        }
+        /*
         if (TextFieldOccupancy.getText() == null || TextFieldOccupancy.getText().length() == 0) {
             errorMessage += "No valid occupancy!\n"; 
         }
+        */
         if (TextFieldStudentName.getText() == null || TextFieldStudentName.getText().length() == 0) {
             errorMessage += "No valid student name!\n"; 
         }
@@ -170,28 +156,7 @@ public class FXMLTableViewController implements Initializable {
             }
         }
          
-        if (TextFieldHallNum.getText() == null || TextFieldHallNum.getText().length() == 0) {
-            errorMessage += "No hall number!\n"; 
-        }  else {
-            // try to parse the hall num into an int.
-            try {
-                Integer.parseInt(TextFieldHallNum.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid hall number (must be an integer)!\n"; 
-            }
-        }
-        
-        if (TextFieldRoomNum.getText() == null || TextFieldRoomNum.getText().length() == 0) {
-            errorMessage += "No valid room number!\n"; 
-        }  else {
-            // try to parse the room num into an int.
-            try {
-                Integer.parseInt(TextFieldRoomNum.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid room number (must be an integer)!\n"; 
-            }
-        }
-         
+     
 
         if (errorMessage.length() == 0) {
             return true;
@@ -218,27 +183,37 @@ public class FXMLTableViewController implements Initializable {
         if (TestProperty != null) {
             // Fill the labels with info from the person object.
             TextFieldLeaseNum.setText(Integer.toString(TestProperty.getLeaseNum()));
+            /*
             TextFieldHallName.setText(TestProperty.getHallName());
             TextFieldHallNum.setText(Integer.toString(TestProperty.getHallNum()));
             TextFieldRoomNum.setText(Integer.toString(TestProperty.getRoomNum()));
+            */
+            
             TextFieldStudentName.setText(TestProperty.getStudentName());
-            TextFieldOccupancy.setText(TestProperty.getOccupancy());
+            comboBoxOccupancy.setValue(TestProperty.getOccupancy());
+            comboBoxCleaningStatus.setValue(TestProperty.getCleaningStatus());
        
-            //we disable the hall category because we do not want to create a new hall every time we edit.
-            TextFieldHallName.setEditable(false);
-            TextFieldHallNum.setEditable(false);            
-            TextFieldHallAddress.setEditable(false);
+            labelHallName.setText(TestProperty.getHallName());
+            labelHallNum.setText(Integer.toString(TestProperty.getHallNum()));
+            labelHallAddress.setText(TestProperty.getHallAddress());
+            labelHallTel.setText(TestProperty.getHallTel());
+            labelRoomNum.setText(Integer.toString(TestProperty.getRoomNum()));
+            labelLeaseNum.setText(Integer.toString(TestProperty.getLeaseNum()));
+            labelLeaseDuration.setText(Integer.toString(TestProperty.getLeaseDuration()));
+            labelStudentName.setText(TestProperty.getStudentName());
+            labelStudentID.setText(Integer.toString(TestProperty.getStudentID()));
+            labelMonthlyRentRate.setText(Double.toString(TestProperty.getMonthlyRentRate()));
+            labelOccupancy.setText(TestProperty.getOccupancy());
+            labelCleaningStatus.setText(TestProperty.getCleaningStatus());
             
 
         } else {
             // Person is null, remove all the text.
             TextFieldLeaseNum.setText("");
-            TextFieldHallName.setText("");
-            TextFieldHallNum.setText("");
-            TextFieldRoomNum.setText("");
             TextFieldStudentName.setText("");
-            TextFieldOccupancy.setText("");
-        //    ColCleaningStatus.setText("");
+            comboBoxOccupancy.setValue("");
+            comboBoxCleaningStatus.setValue("");
+
         }
     }
 
@@ -264,26 +239,33 @@ public class FXMLTableViewController implements Initializable {
                 
         //Here we are checking that the user has the privillages to view Lease and Student details
         //if the account is warden then they will be unable to view leasenumber and student name.
+       /*
         if(UWEAccommodationSystem.getAccType() == 'w')
         {
             ColLeaseNum.setVisible(false);
             ColStudentName.setVisible(false);
             
-            TextFieldLeaseNum.setVisible(false);
-            TextFieldHallName.setVisible(false);
-            TextFieldOccupancy.setVisible(false);
-            TextFieldRoomNum.setVisible(false);
-            TextFieldStudentName.setVisible(false);
-            TextFieldHallNum.setVisible(false);
-            
+            TextFieldLeaseNum.setDisable(true);
+            TextFieldLeaseDuration.setDisable(true);
+            TextFieldStudentName.setDisable(true);
+            comboBoxOccupancy.setDisable(true);
             DeleteButton.setVisible(false);
-            AddButton.setVisible(false);
+
             
         }
-        
+        */
         
         //show items on tableView
         tableView.setItems(observableList);
+        
+        //set initial cleaning status to clean
+        comboBoxCleaningStatus.setValue("clean");
+        comboBoxCleaningStatus.setItems(cleaningStatusList);
+        
+        //set initial occupancy to unoccupied
+        comboBoxOccupancy.setValue("Unoccupied");
+        comboBoxOccupancy.setItems(occupancyList);
+        
         
         // Clear Testproperty details.
         showPropertyDetails(null);
@@ -291,8 +273,11 @@ public class FXMLTableViewController implements Initializable {
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPropertyDetails(newValue));
     }
         ObservableList<Property> observableList = FXCollections.observableArrayList(
-                //new Property(Hall test)
-               // ,new Property(123,"Michael1",156,679,"Christy1","occupied","clean")
+                UWEAccommodationSystem.getInstance().getProperty()
         );
-                   
+        
+        ObservableList<String> cleaningStatusList = FXCollections.observableArrayList("Clean","Dirty","Offline");
+        ObservableList<String> occupancyList = FXCollections.observableArrayList("Occupied","Unoccupied");
+     
+  
 }
