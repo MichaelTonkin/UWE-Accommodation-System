@@ -20,13 +20,13 @@
          <center>
             <TableView fx:id="tableView" editable="true" maxHeight="500.0" prefHeight="337.0" prefWidth="960.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="ColLeaseNum" prefWidth="100.0" text="Lease Num" />
-                <TableColumn fx:id="ColHallName" prefWidth="100.0" text="Hall Name" />
-                  <TableColumn fx:id="ColHallNum" prefWidth="100.0" text="Hall Num" />
-                  <TableColumn fx:id="ColRoomNum" prefWidth="100.0" text="Room Num" />
-                  <TableColumn fx:id="ColStudentName" prefWidth="100.0" text="Student Name" />
-                  <TableColumn fx:id="ColOccupancy" prefWidth="100.0" text="Occupancy Status" />
-                  <TableColumn fx:id="ColCleaningStatus" prefWidth="100.0" text="Cleaning Status" />
+                <TableColumn fx:id="colLeaseNum" prefWidth="100.0" text="Lease Num" />
+                <TableColumn fx:id="colHallName" prefWidth="100.0" text="Hall Name" />
+                  <TableColumn fx:id="colHallNum" prefWidth="100.0" text="Hall Num" />
+                  <TableColumn fx:id="colRoomNum" prefWidth="100.0" text="Room Num" />
+                  <TableColumn fx:id="colStudentName" prefWidth="100.0" text="Student Name" />
+                  <TableColumn fx:id="colOccupancy" prefWidth="100.0" text="Occupancy Status" />
+                  <TableColumn fx:id="colCleaningStatus" prefWidth="100.0" text="Cleaning Status" />
               </columns>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -61,8 +61,8 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="DeleteButton" layoutX="735.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleDeleteProperty" text="Delete" />
-                  <Button fx:id="SaveButton" layoutX="645.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleSaveProperty" text="Save" />
+                  <Button fx:id="deleteButton" layoutX="735.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleDeleteProperty" text="Delete" />
+                  <Button fx:id="saveButton" layoutX="645.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleSaveProperty" text="Save" />
                   <GridPane hgap="20.0" layoutX="25.0" layoutY="60.0" prefHeight="261.0" prefWidth="566.0" vgap="20.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -174,23 +174,23 @@
                     </rowConstraints>
                      <children>
                         <Label text="Lease Number" />
-                        <TextField fx:id="TextFieldLeaseNum" prefHeight="25.0" prefWidth="114.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="textFieldLeaseNum" prefHeight="25.0" prefWidth="114.0" GridPane.columnIndex="1" />
                         <Label prefHeight="17.0" prefWidth="135.0" text="Lease Duration (Month)" GridPane.rowIndex="1" />
-                        <TextField fx:id="TextFieldLeaseDuration" prefHeight="25.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="textFieldLeaseDuration" prefHeight="25.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Student Name" GridPane.rowIndex="3" />
-                        <TextField fx:id="TextFieldStudentName" prefHeight="25.0" prefWidth="131.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="textFieldStudentName" prefHeight="25.0" prefWidth="131.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Occupancy" GridPane.rowIndex="5" />
                         <Label text="Cleaning Status" GridPane.rowIndex="6" />
                         <ComboBox fx:id="comboBoxCleaningStatus" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <ComboBox fx:id="comboBoxOccupancy" prefHeight="25.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label text="Student ID" GridPane.rowIndex="4" />
-                        <TextField fx:id="TextFieldStudentID" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="textFieldStudentID" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label GridPane.rowIndex="2" />
                         <Label text="Monthly Rent Rate" GridPane.rowIndex="2" />
-                        <TextField fx:id="TextFieldMonthlyRentRate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="textFieldMonthlyRentRate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Button fx:id="LogoutButton" layoutX="1048.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeScreenButtonClicked" text="Logout" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="11.0">
+                  <Button fx:id="logoutButton" layoutX="1048.0" layoutY="345.0" mnemonicParsing="false" onAction="#ChangeScreenButtonClicked" text="Logout" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="11.0">
                      <font>
                         <Font size="15.0" />
                      </font>

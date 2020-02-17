@@ -29,7 +29,6 @@ public class UWEAccommodationSystem {
     private static char accountType;
     private static ArrayList<Property> property = new ArrayList<Property>();
     private int leaseNum = 1;
-    private int studentNameInc = 0;
     private int studentID = 18034567;
     private String[] names = {"James", "Wei", "Bas", "Raj", "Chris", "Mr Sparkle", "Cat", "Bird", "Dog", "Ryan the Tiger", "Jon Snow", "Rakib",
          "James", "Wei", "Bas", "Raj", "Chris", "Mr Sparkle", "Cat", "Bird", "Dog", "Ryan the Tiger", "Jon Snow", "Rakib",

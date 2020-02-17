@@ -38,19 +38,19 @@ public class FXMLTableViewController implements Initializable {
     
     public TableView<Property> tableView;
     
-    public TableColumn<Property,Integer> ColLeaseNum;
-    public TableColumn<Property,String> ColHallName;
-    public TableColumn<Property,Integer> ColHallNum;
-    public TableColumn<Property,Integer> ColRoomNum;
-    public TableColumn<Property,String> ColStudentName;
-    public TableColumn<Property,String> ColOccupancy;
-    public TableColumn<Property,String> ColCleaningStatus;
+    public TableColumn<Property,Integer> colLeaseNum;
+    public TableColumn<Property,String> colHallName;
+    public TableColumn<Property,Integer> colHallNum;
+    public TableColumn<Property,Integer> colRoomNum;
+    public TableColumn<Property,String> colStudentName;
+    public TableColumn<Property,String> colOccupancy;
+    public TableColumn<Property,String> colCleaningStatus;
     
-    public TextField TextFieldLeaseNum;
-    public TextField TextFieldLeaseDuration;
-    public TextField TextFieldStudentName;
-    public TextField TextFieldStudentID;
-    public TextField TextFieldMonthlyRentRate;
+    public TextField textFieldLeaseNum;
+    public TextField textFieldLeaseDuration;
+    public TextField textFieldStudentName;
+    public TextField textFieldStudentID;
+    public TextField textFieldMonthlyRentRate;
     public ComboBox comboBoxCleaningStatus;
     public ComboBox comboBoxOccupancy;
     
@@ -67,8 +67,8 @@ public class FXMLTableViewController implements Initializable {
     public Label labelOccupancy;
     public Label labelCleaningStatus;
     
-    public Button DeleteButton;
-    public Button SaveButton;
+    public Button deleteButton;
+    public Button saveButton;
 
   
 
@@ -94,10 +94,10 @@ public class FXMLTableViewController implements Initializable {
     private void handleSaveProperty() {
         if(isInputValid()){
             Property selectedProperty = tableView.getSelectionModel().getSelectedItem();
-            selectedProperty.setLeaseNum(Integer.parseInt(TextFieldLeaseNum.getText()));
-            selectedProperty.setStudentName(TextFieldStudentName.getText());
-            selectedProperty.setStudentID(Integer.parseInt(TextFieldStudentID.getText()));
-            selectedProperty.setMonthlyRentRate(Double.parseDouble(TextFieldMonthlyRentRate.getText()));
+            selectedProperty.setLeaseNum(Integer.parseInt(textFieldLeaseNum.getText()));
+            selectedProperty.setStudentName(textFieldStudentName.getText());
+            selectedProperty.setStudentID(Integer.parseInt(textFieldStudentID.getText()));
+            selectedProperty.setMonthlyRentRate(Double.parseDouble(textFieldMonthlyRentRate.getText()));
             selectedProperty.setOccupancy((String) comboBoxOccupancy.getValue());
             selectedProperty.setCleaningStatus((String) comboBoxCleaningStatus.getValue());
 
@@ -141,16 +141,16 @@ public class FXMLTableViewController implements Initializable {
             errorMessage += "No valid occupancy!\n"; 
         }
         */
-        if (TextFieldStudentName.getText() == null || TextFieldStudentName.getText().length() == 0) {
+        if (textFieldStudentName.getText() == null || textFieldStudentName.getText().length() == 0) {
             errorMessage += "No valid student name!\n"; 
         }
 
-        if (TextFieldLeaseNum.getText() == null || TextFieldLeaseNum.getText().length() == 0) {
+        if (textFieldLeaseNum.getText() == null || textFieldLeaseNum.getText().length() == 0) {
             errorMessage += "No lease number !\n"; 
         } else {
             // try to parse the lease num into an int.
             try {
-                Integer.parseInt(TextFieldLeaseNum.getText());
+                Integer.parseInt(textFieldLeaseNum.getText());
             } catch (NumberFormatException e) {
                 errorMessage += "No valid lease number (must be an integer)!\n"; 
             }
@@ -182,14 +182,14 @@ public class FXMLTableViewController implements Initializable {
     private void showPropertyDetails(Property TestProperty) {
         if (TestProperty != null) {
             // Fill the labels with info from the person object.
-            TextFieldLeaseNum.setText(Integer.toString(TestProperty.getLeaseNum()));
+            textFieldLeaseNum.setText(Integer.toString(TestProperty.getLeaseNum()));
             /*
             TextFieldHallName.setText(TestProperty.getHallName());
             TextFieldHallNum.setText(Integer.toString(TestProperty.getHallNum()));
             TextFieldRoomNum.setText(Integer.toString(TestProperty.getRoomNum()));
             */
             
-            TextFieldStudentName.setText(TestProperty.getStudentName());
+            textFieldStudentName.setText(TestProperty.getStudentName());
             comboBoxOccupancy.setValue(TestProperty.getOccupancy());
             comboBoxCleaningStatus.setValue(TestProperty.getCleaningStatus());
        
@@ -209,8 +209,8 @@ public class FXMLTableViewController implements Initializable {
 
         } else {
             // Person is null, remove all the text.
-            TextFieldLeaseNum.setText("");
-            TextFieldStudentName.setText("");
+            textFieldLeaseNum.setText("");
+            textFieldStudentName.setText("");
             comboBoxOccupancy.setValue("");
             comboBoxCleaningStatus.setValue("");
 
@@ -229,27 +229,27 @@ public class FXMLTableViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
-        ColLeaseNum.setCellValueFactory(new PropertyValueFactory<>("LeaseNum"));
-        ColStudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
-        ColHallName.setCellValueFactory(new PropertyValueFactory<>("HallName"));
-        ColHallNum.setCellValueFactory(new PropertyValueFactory<>("HallNum"));
-        ColRoomNum.setCellValueFactory(new PropertyValueFactory<>("RoomNum"));        
-        ColOccupancy.setCellValueFactory(new PropertyValueFactory<>("Occupancy"));
-        ColCleaningStatus.setCellValueFactory(new PropertyValueFactory<>("CleaningStatus"));
+        colLeaseNum.setCellValueFactory(new PropertyValueFactory<>("LeaseNum"));
+        colStudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
+        colHallName.setCellValueFactory(new PropertyValueFactory<>("HallName"));
+        colHallNum.setCellValueFactory(new PropertyValueFactory<>("HallNum"));
+        colRoomNum.setCellValueFactory(new PropertyValueFactory<>("RoomNum"));        
+        colOccupancy.setCellValueFactory(new PropertyValueFactory<>("Occupancy"));
+        colCleaningStatus.setCellValueFactory(new PropertyValueFactory<>("CleaningStatus"));
                 
         //Here we are checking that the user has the privillages to view Lease and Student details
         //if the account is warden then they will be unable to view leasenumber and student name.
        /*
         if(UWEAccommodationSystem.getAccType() == 'w')
         {
-            ColLeaseNum.setVisible(false);
-            ColStudentName.setVisible(false);
+            colLeaseNum.setVisible(false);
+            colStudentName.setVisible(false);
             
-            TextFieldLeaseNum.setDisable(true);
-            TextFieldLeaseDuration.setDisable(true);
-            TextFieldStudentName.setDisable(true);
+            textFieldLeaseNum.setDisable(true);
+            textFieldLeaseDuration.setDisable(true);
+            textFieldStudentName.setDisable(true);
             comboBoxOccupancy.setDisable(true);
-            DeleteButton.setVisible(false);
+            deleteButton.setVisible(false);
 
             
         }
