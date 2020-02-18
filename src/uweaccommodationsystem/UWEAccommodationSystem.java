@@ -41,21 +41,26 @@ public class UWEAccommodationSystem {
     Method: addRoomsAndLeases
     Description: Generates the default data which will be added to the table in the 
     gui.
+    Parameters: hall - the hall that we want to populate with rooms and leases.
     Created: 12/02/2020.
     Updated: 18/02/2020.
     */
     private void addRoomsAndLeases(Hall hall) {
 
-        int random = rand.nextInt(2);
+        int random;
+        
+        
         // Add rooms
         for (int x = 0; x < room.length; x++) {
             room[x] = new Room(x);
 
             //Create lease if random number is 1, else do nothing
             random = rand.nextInt(2);
-            if (random == 1) {
-                //leaseNum = leaseNum + x;
-                lease.add(new Lease(12, leaseNum, Integer.toString(x) + " Frenchay Campus, Bristol, BS16 1ZG")); //TODO add hall name
+            if (random == 1) 
+            {   
+                lease.add(new Lease(12, leaseNum, Integer.toString(x) +
+                        " Frenchay Campus, Bristol, BS16 1ZG")); //create the lease.
+                
                 //if room has a lease set cleaningstatus and occupancy to Clean and Occupied
                 random = rand.nextInt(2);
                 //set the cleaning status randomly
@@ -66,14 +71,16 @@ public class UWEAccommodationSystem {
                     default:
                         room[x].setCleaningStatus("Dirty");
                 }
+                
+                //create a student and add it to the lease.
                 student.add(new Student(studentID + random, names[leaseNum - 1]));
                 lease.get(leaseNum - 1).setStudent(student.get(leaseNum - 1));
 
                 room[x].setRoomStatus("Occupied");
                 
 
-            } else {
-                lease.add(new Lease(0, 0, "")); //TODO 0 = empty
+            } else { //create an unoccupied room without a lease.
+                lease.add(new Lease(0, 0, ""));
                 
                 student.add(new Student(0 + random, ""));
                 lease.get(leaseNum - 1).setStudent(student.get(leaseNum - 1));
@@ -81,20 +88,18 @@ public class UWEAccommodationSystem {
                 room[x].setCleaningStatus("Offline");
                 room[x].setRoomStatus("Unoccupied");
             }
-            random = rand.nextInt(1000);
-
-            room[x].setLease(lease.get(leaseNum - 1));
+           
+            room[x].setLease(lease.get(leaseNum - 1)); //add lease to room
 
             leaseNum++;
 
-            //}
-            hall.addRoom(room[x]);
+            hall.addRoom(room[x]); //add the room to the hall.
         }
     }
 
     /*
     Constructor: UWEAccommodationSystem
-    Description: Intialises halls, adds rooms to halls and has a chance to create a new lease for a room based on a random number.
+    Description: Intialises halls.
     Created: 12/02/2020
     Updated: 12/02/2020
      */
@@ -132,7 +137,8 @@ public class UWEAccommodationSystem {
             }
         }
     }
-
+    
+    //Create a singleton out of this class so it can be used as the login controller.
     public static UWEAccommodationSystem getInstance() {
 
         if (uweAccommodationSystem == null) {
