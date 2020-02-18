@@ -1,8 +1,10 @@
 /*
 Class: UWEAccommodationSystem
 Description: Handles the system login.
+It also handles generating default data, however this will not be the case when we
+switch to pulling data from external file.
 Created: 27/01/2020
-Updated: 27/01/2020
+Updated: 18/02/2020
 Authors: Michael Tonkin (Michael2.Tonkin@live.uwe.ac.uk)
  */
 package uweaccommodationsystem;
@@ -35,7 +37,13 @@ public class UWEAccommodationSystem {
          "James", "Wei", "Bas", "Raj", "Chris", "Mr Sparkle", "Cat", "Bird", "Dog", "Ryan the Tiger", "Jon Snow", "Rakib",
          "James", "Wei", "Bas", "Raj", "Chris", "Mr Sparkle", "Cat", "Bird", "Dog", "Ryan the Tiger", "Jon Snow", "Rakib"};
 
-    //TODO UPDATE COMMENTS!!!
+    /*
+    Method: addRoomsAndLeases
+    Description: Generates the default data which will be added to the table in the 
+    gui.
+    Created: 12/02/2020.
+    Updated: 18/02/2020.
+    */
     private void addRoomsAndLeases(Hall hall) {
 
         int random = rand.nextInt(2);

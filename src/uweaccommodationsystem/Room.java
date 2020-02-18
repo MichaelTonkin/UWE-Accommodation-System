@@ -1,6 +1,15 @@
+/*
+Class: Room
+Description: Contains information for a generic room, which can be instantiated
+for any individual room.
+Created: 27/01/2020 (Asia Benyadilok).
+Updated: 18/02/2020 (Michael Tonkin - added header).
+*/
+
 package uweaccommodationsystem;
 
-public class Room{
+public class Room
+{
     private int roomNumber;
     private String roomStatus; //false = unoccupied, true = occupied
     private String cleaningStatus;

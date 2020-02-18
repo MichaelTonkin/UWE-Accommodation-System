@@ -28,6 +28,7 @@ public class Hall {
         this.hallTelNum = hallTelNum;
     }
     
+    //getter functions to access all variables in the class when they are needed.
     public String getHallTel()
     {
         return hallTelNum;
@@ -48,15 +49,15 @@ public class Hall {
         return hallNum;
     }
     
+    public ArrayList<Room> getRooms()
+    {
+        return rooms;
+    }
+    
     //function: addRoom
     //description: adds a room to our list of rooms for this hall.
     public void addRoom(Room room)
     {
      rooms.add(room);
-    }
-    
-    public ArrayList<Room> getRooms()
-    {
-        return rooms;
     }
 }
